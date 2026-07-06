@@ -13,11 +13,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     lsb-release \
     && rm -rf /var/lib/apt/lists/*
 
-# Add Chromium repository
-RUN curl -fsSLo /usr/share/keyrings/debian-bpo-archive-keyring.gpg https://repo.pahole.me/debian/archive-keyring.gpg && \
-    echo "deb [signed-by=/usr/share/keyrings/debian-bpo-archive-keyring.gpg] http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/bookworm-backports.list
-
+# Add Chromium repository (bookworm-backports is official Debian, no custom keyring needed)
+RUN echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/bookworm-backports.list
 # Install X11, display, and desktop environment
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
     x11-utils \
