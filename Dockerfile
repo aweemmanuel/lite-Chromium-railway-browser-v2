@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Add Chromium repository (bookworm-backports is official Debian, no custom keyring needed)
 RUN echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/bookworm-backports.list
-# Install X11, display, and desktop environment
 
+# Install X11, display, and desktop environment
 RUN apt-get update && apt-get install -y --no-install-recommends \
     xvfb \
     x11-utils \
